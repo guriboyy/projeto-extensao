@@ -1,55 +1,164 @@
-# 🚀 Projeto — Guia de Configuração e Trabalho
+# 🌐 Portal Fraternidade
 
-## 🧰 Tecnologias Utilizadas
-
-- **Node.js**
-- **XAMPP**
-- **MySQL**
-- **React**
+Bem-vindo ao projeto **Portal Fraternidade**! 💫  
+Aqui você encontra todas as instruções para configurar o **back-end** e seguir o fluxo de trabalho de forma organizada e produtiva. 🚀
 
 ---
 
-## ⚙️ Passo a Passo — Configuração do Back-end
+## 🧩 Tecnologias
 
-1. **Clone o repositório** em qualquer pasta ou diretório da sua máquina:
+- 🟩 **Node.js**  
+- 🐘 **XAMPP / MySQL**  
+- ⚛️ **React**  
 
-   ```bash
-   git clone <url-do-repositorio>
+---
 
-    Instale o Node.js e o XAMPP (caso ainda não tenha instalado).
+## ⚙️ Pré-requisitos
 
-    Acesse a pasta backend/ e instale as dependências:
+Antes de começar, verifique se você possui instalado:
 
-    cd backend
-    npm install
+- ✅ **Node.js** (versão compatível com o projeto)  
+- ✅ **XAMPP** com o **MySQL** ativo  
+- ✅ **Git** para clonar o repositório  
 
-    Copie o arquivo .env para a raiz do backend.
+---
 
-    Crie o banco de dados:
+## 🧱 Configuração do Back-End — Passo a Passo
 
-        Abra o Shell do XAMPP.
+### 1️⃣ Clonar o repositório
+```bash
+git clone <URL-do-repositório>
+cd <nome-do-repositório>
 
-        Execute os comandos SQL necessários para criar o banco.
+2️⃣ Instalar Node e XAMPP
 
-🧑‍💻 Fluxo de Trabalho — Desenvolvimento
+    Baixe e instale o Node.js (https://nodejs.org
 
-Para garantir um ambiente organizado e colaborativo, siga estas etapas ao trabalhar em uma nova funcionalidade:
+)
 
-    Crie uma nova branch baseada na main.
-    Use o padrão:
+Instale o XAMPP (https://www.apachefriends.org/
 
-feature/Nome-da-Feature
+    )
 
-Exemplo:
+    Abra o painel do XAMPP e inicie o MySQL
 
-    feature/Design-Login-Gui
+3️⃣ Instalar dependências
 
-    Faça commits frequentes das suas alterações.
-    Isso evita perda de progresso caso algo aconteça com sua máquina.
+No diretório backend, execute:
 
-    Ao finalizar a feature, abra um Pull Request (PR) para a branch main.
-    O PR será analisado e aprovado antes do merge.
+cd backend
+npm install
 
-    Caso precise atualizar sua branch com outra feature, é possível fazer o merge — apenas tenha cuidado com conflitos.
+4️⃣ Copiar arquivo .env
 
-💡 Dica: mantenha sempre sua branch atualizada com a main e revise seus commits antes de abrir um PR.
+Copie o arquivo de exemplo, se existir:
+
+cp .env.example .env
+
+ou crie manualmente um .env com suas variáveis.
+5️⃣ Criar o banco de dados (no XAMPP / MySQL)
+
+    Abra o XAMPP e inicie o MySQL
+
+    Clique em Shell no painel
+
+    Execute o login:
+
+mysql -u root
+
+ou, se tiver senha:
+
+mysql -u root -p
+
+Crie o banco:
+
+    CREATE DATABASE PortalFraternidade
+      DEFAULT CHARACTER SET utf8mb4
+      DEFAULT COLLATE utf8mb4_general_ci;
+
+6️⃣ Ajustar date-source.ts
+
+Local: backend/db/date-source.ts
+Antes de rodar pela primeira vez:
+
+synchronize: true,
+logging: true,
+
+    ⚠️ Use synchronize: true somente para criar ou atualizar o schema na primeira execução!
+
+7️⃣ Rodar o back-end em modo dev
+
+npm run dev
+
+8️⃣ Parar o servidor
+
+    Pressione CTRL + C no terminal.
+
+    Altere novamente em date-source.ts:
+
+    synchronize: false,
+    logging: false,
+
+    Pronto! 🚦
+
+9️⃣ Reiniciar o servidor
+
+Quando quiser rodar novamente:
+
+npm run dev
+
+🌿 Fluxo de Trabalho — Boas Práticas com Git
+
+Siga este padrão para manter o projeto organizado:
+
+    🌱 Crie uma nova branch baseada na main
+
+git checkout -b feature/Design-Login-Gui
+
+Padrão sugerido: feature/NomeDaFeature-SeuNome
+
+💾 Faça commits frequentes
+Salve sempre suas alterações com mensagens descritivas.
+Isso evita perda de trabalho e facilita o review.
+
+🔄 Abra um Pull Request (PR)
+Quando terminar sua feature, abra um PR para main.
+Ele será revisado antes de ser integrado.
+
+🧠 Atualize sua branch se necessário
+
+git fetch origin
+git merge origin/main
+
+ou
+
+    git rebase origin/main
+
+    Resolva conflitos com calma antes de subir as mudanças.
+
+🧾 Exemplo de .env
+
+# 🌍 Configurações do Servidor
+PORT=3000
+NODE_ENV=development
+
+# 💾 Banco de Dados
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=PortalFraternidade
+
+    🪄 Dica: mantenha o arquivo .env fora de commits (.gitignore já deve conter ele).
+
+💡 Dicas Finais
+
+    ⚙️ Use synchronize: true somente na primeira execução ou em ambiente de teste.
+
+    🧱 Em produção, utilize migrations para controle de schema.
+
+    🧩 Faça backup do banco antes de alterações grandes.
+
+    📚 Documente dependências novas para o time (ex: MIGRATIONS.md, SETUP.md, etc).
+
+    ✨ Seja organizado com branches e commits — o futuro você vai agradecer!
