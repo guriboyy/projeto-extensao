@@ -1,22 +1,55 @@
--------- Tecnologias ---------------
-1 - node
-2 - xampp
-3 - mysql
-4 - react
+# 🚀 Projeto — Guia de Configuração e Trabalho
 
--------- Passo a Passo para configuração do back-end -------------
-1 - Clone o repositório em qualquer pasta ou diretório.
-2 - instalar o node e o xampp.
-2 - Acesse o pasta backend com o node já baixado e rode o comando npm install.
-3 - Copie o arquivo .env na pasta raiz do backend.
-4 - Para criar o banco, entre no shell do xampp, rode os comandos.
+## 🧰 Tecnologias Utilizadas
 
+- **Node.js**
+- **XAMPP**
+- **MySQL**
+- **React**
 
+---
 
--------- Passo a Passo para trabalho --------------
-Quando começar a trabalhar com uma nova funcionalidade do projeto, devemos seguir esses passos para mantermos um ambiente organizado e tranquilo:
+## ⚙️ Passo a Passo — Configuração do Back-end
 
-1 - Crie uma branch nova com base na main, tente seguir esse exemplo para seguirmos um padrão "feature/Design-Login-Gui".
-2 - Lembre de sempre dar commit nas mudanças ao final, se por acaso der problema no seu computador não vai ser legal refazer trabalho.
-3 - Após terminar a feature, abra um PR para branch main, ele será analisado e concluído.
-4 - Caso precise atualizar sua branch com outra feature, é possivel mergea-las, apenas tome cuidado.
+1. **Clone o repositório** em qualquer pasta ou diretório da sua máquina:
+
+   ```bash
+   git clone <url-do-repositorio>
+
+    Instale o Node.js e o XAMPP (caso ainda não tenha instalado).
+
+    Acesse a pasta backend/ e instale as dependências:
+
+    cd backend
+    npm install
+
+    Copie o arquivo .env para a raiz do backend.
+
+    Crie o banco de dados:
+
+        Abra o Shell do XAMPP.
+
+        Execute os comandos SQL necessários para criar o banco.
+
+🧑‍💻 Fluxo de Trabalho — Desenvolvimento
+
+Para garantir um ambiente organizado e colaborativo, siga estas etapas ao trabalhar em uma nova funcionalidade:
+
+    Crie uma nova branch baseada na main.
+    Use o padrão:
+
+feature/Nome-da-Feature
+
+Exemplo:
+
+    feature/Design-Login-Gui
+
+    Faça commits frequentes das suas alterações.
+    Isso evita perda de progresso caso algo aconteça com sua máquina.
+
+    Ao finalizar a feature, abra um Pull Request (PR) para a branch main.
+    O PR será analisado e aprovado antes do merge.
+
+    Caso precise atualizar sua branch com outra feature, é possível fazer o merge — apenas tenha cuidado com conflitos.
+
+💡 Dica: mantenha sempre sua branch atualizada com a main e revise seus commits antes de abrir um PR.
