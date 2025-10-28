@@ -13,7 +13,7 @@ export class TokenGateway implements ITokenGateway{
             email: user.email,
             isActive: user.isActive
         }, this.secretKey,{
-            expiresIn: '2m'
+            expiresIn: '5h'
         });
 
         return accessToken;
