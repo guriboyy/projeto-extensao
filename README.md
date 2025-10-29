@@ -88,7 +88,7 @@ cd <nome-do-repositório>
 
 2️⃣ Instalar Node e XAMPP
 
-    Baixe e instale o Node.js (https://nodejs.org
+    Baixe e instale o Node.js ([https://nodejs.org](https://nodejs.org/dist/v20.17.0/node-v20.17.0-x64.msi)
 
 )
 
