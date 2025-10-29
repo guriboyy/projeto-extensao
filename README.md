@@ -23,6 +23,62 @@ Antes de começar, verifique se você possui instalado:
 
 ---
 
+🌿 Fluxo de Trabalho — Boas Práticas com Git
+
+Siga este padrão para manter o projeto organizado:
+
+    🌱 Crie uma nova branch baseada na main
+
+git checkout -b feature/Design-Login-Gui
+
+Padrão sugerido: feature/NomeDaFeature-SeuNome
+
+💾 Faça commits frequentes
+Salve sempre suas alterações com mensagens descritivas.
+Isso evita perda de trabalho e facilita o review.
+
+🔄 Abra um Pull Request (PR)
+Quando terminar sua feature, abra um PR para main.
+Ele será revisado antes de ser integrado.
+
+🧠 Atualize sua branch se necessário
+
+git fetch origin.
+git merge origin/main
+
+ou
+
+    git rebase origin/main
+
+    Resolva conflitos com calma antes de subir as mudanças.
+
+🧾 Exemplo de .env
+
+# 🌍 Configurações do Servidor
+PORT=3000
+NODE_ENV=development
+
+# 💾 Banco de Dados
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=PortalFraternidade
+
+    🪄 Dica: mantenha o arquivo .env fora de commits (.gitignore já deve conter ele).
+
+💡 Dicas Finais
+
+    ⚙️ Use synchronize: true somente na primeira execução ou em ambiente de teste.
+
+    🧱 Em produção, utilize migrations para controle de schema.
+
+    🧩 Faça backup do banco antes de alterações grandes.
+
+    📚 Documente dependências novas para o time (ex: MIGRATIONS.md, SETUP.md, etc).
+
+    ✨ Seja organizado com branches e commits — o futuro você vai agradecer!
+
 ## 🧱 Configuração do Back-End — Passo a Passo
 
 ### 1️⃣ Clonar o repositório
@@ -107,58 +163,4 @@ Quando quiser rodar novamente:
 
 npm run dev
 
-🌿 Fluxo de Trabalho — Boas Práticas com Git
 
-Siga este padrão para manter o projeto organizado:
-
-    🌱 Crie uma nova branch baseada na main
-
-git checkout -b feature/Design-Login-Gui
-
-Padrão sugerido: feature/NomeDaFeature-SeuNome
-
-💾 Faça commits frequentes
-Salve sempre suas alterações com mensagens descritivas.
-Isso evita perda de trabalho e facilita o review.
-
-🔄 Abra um Pull Request (PR)
-Quando terminar sua feature, abra um PR para main.
-Ele será revisado antes de ser integrado.
-
-🧠 Atualize sua branch se necessário
-
-git fetch origin
-git merge origin/main
-
-ou
-
-    git rebase origin/main
-
-    Resolva conflitos com calma antes de subir as mudanças.
-
-🧾 Exemplo de .env
-
-# 🌍 Configurações do Servidor
-PORT=3000
-NODE_ENV=development
-
-# 💾 Banco de Dados
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=PortalFraternidade
-
-    🪄 Dica: mantenha o arquivo .env fora de commits (.gitignore já deve conter ele).
-
-💡 Dicas Finais
-
-    ⚙️ Use synchronize: true somente na primeira execução ou em ambiente de teste.
-
-    🧱 Em produção, utilize migrations para controle de schema.
-
-    🧩 Faça backup do banco antes de alterações grandes.
-
-    📚 Documente dependências novas para o time (ex: MIGRATIONS.md, SETUP.md, etc).
-
-    ✨ Seja organizado com branches e commits — o futuro você vai agradecer!
