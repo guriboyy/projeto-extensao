@@ -4,6 +4,7 @@ import dotenv           from 'dotenv';
 import {AppDataSource}  from "./db/date-source";
 import { router as  authRoutes } from './routes/authRoute';
 import { router as  userRoutes } from './routes/userRoute';
+import { router as  roleRoutes } from './routes/roleRoute';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/role", roleRoutes);
 
 
 AppDataSource.initialize()
