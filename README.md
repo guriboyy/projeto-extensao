@@ -107,7 +107,7 @@ npm install
 
 4️⃣ Copiar arquivo .env
 
-Copie o arquivo de exemplo, se existir:
+Copie o arquivo .env de exemplo na raiz do diretório backend:
 
 cp .env.example .env
 
