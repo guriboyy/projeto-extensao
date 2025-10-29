@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "../pages/Login";
+import Login from "../pages/loginView";
+import type { JSX } from "react";
 
 
 function AppRoutes(): JSX.Element {
