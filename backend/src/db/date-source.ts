@@ -17,11 +17,11 @@ config();
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: process.env.DATABASE_HOST,
+    host: process.env.DATABASE_HOST ?? "localhost",
     port: process.env.DATABASE_PORT ? parseInt(process.env.DATABASE_PORT) : 3306,
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DBNAME,
+    username: process.env.DATABASE_USERNAME ?? "root",
+    password: process.env.DATABASE_PASSWORD ?? "localhost",
+    database: process.env.DATABASE_DBNAME ?? "portalfraternidade",
     synchronize: false,
     logging: false,
     charset: "utf8mb4_unicode_ci",
