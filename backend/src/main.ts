@@ -6,6 +6,7 @@ import { router as  authRoutes } from './routes/authRoute';
 import { router as  userRoutes } from './routes/userRoute';
 
 dotenv.config();
+// testando o commit
 
 const PORT = process.env.SERVER_PORT || 4000;
 const app = express();
