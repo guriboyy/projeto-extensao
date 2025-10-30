@@ -1,7 +1,10 @@
-function NavBar() {
+
+
+export default function NavBar() {
+
+  
     return(
-        <h1>Ola</h1>
+        <h1></h1>
     ) 
 }
 
-export default NavBar
