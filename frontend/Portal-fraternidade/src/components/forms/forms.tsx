@@ -4,12 +4,12 @@ import Form from 'react-bootstrap/Form';
 
 import {useForm} from '../../hooks/useFormHooks'
 
-function FormsDefault() {
+function FormsDefault(text:string) {
     const {setEmail, setPasswd,handleForm, error} = useForm();
     return(
      
         <Form onSubmit={(e)=> handleForm(e)} className="p-5 shadow rounded" style={{ width: "80%", maxWidth: "400px" }}>
-            <h3 className="text-center mb-4">Bem-vindo</h3>
+            <h3 className="text-center mb-4">{text}</h3>
               <Form.Group  className="mb-3" controlId="formBasicEmail">                
                 <Form.Label>Email address</Form.Label>
                 <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" />
