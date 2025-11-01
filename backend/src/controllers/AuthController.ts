@@ -20,7 +20,8 @@ export class AuthController{
         );
     }
 
-    public async login(req: Request, res: Response): Promise<Response> {
+    public async login(req: Request, res: Response): Promise<Response> {      
+         
         const { email, password } = req.body;
 
         try{

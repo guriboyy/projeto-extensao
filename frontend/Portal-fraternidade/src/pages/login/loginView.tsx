@@ -1,4 +1,4 @@
-import FormsDefault from "../components/forms/forms";
+import FormsDefault from "../../components/forms/forms";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
