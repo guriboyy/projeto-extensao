@@ -12,6 +12,7 @@ import { RoleScreenFunction } from "../entities/RoleScreenFunction";
 import { Screen }             from "../entities/Screen";
 import { ScreenFunction }     from "../entities/ScreenFunction";
 import { UserAccount }        from "../entities/UserAccount";
+import { Vibration }          from "../entities/Vibration";
 
 config();
 
@@ -36,7 +37,8 @@ export const AppDataSource = new DataSource({
         RoleScreenFunction,
         Screen,
         ScreenFunction,
-        UserAccount
+        UserAccount,
+        Vibration
     ],
     subscribers: [],
     migrations: [],

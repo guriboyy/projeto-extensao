@@ -3,6 +3,7 @@ import { Role } from "./Role";
 import { NoticeBoard } from "./NoticeBoard";
 import { RefreshToken } from "./RefreshToken";
 import { Meeting } from "./Meeting";
+import { Vibration } from "./Vibration";
 
 @Entity({name: "UserAccount"})
 export class UserAccount {
@@ -51,4 +52,7 @@ export class UserAccount {
 
     @OneToMany(() => Meeting, (meeting) => meeting.userAccount)
     meetings?: Meeting[];
+
+    @OneToMany(() => Vibration, (vibration) => vibration.userAccount)
+    vibrations?: Vibration[];
 }
