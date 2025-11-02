@@ -1,7 +1,7 @@
 import express                        from "express";
 import cors                           from "cors";
 import dotenv                         from 'dotenv';
-import {AppDataSource}                from "./db/date-source";
+import {AppDataSource}                from "./db/data-source";
 import { router as  authRoutes }      from './routes/authRoute';
 import { router as  userRoutes }      from './routes/userRoute';
 import { router as  roleRoutes }      from './routes/roleRoute';

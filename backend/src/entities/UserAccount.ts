@@ -4,6 +4,7 @@ import { NoticeBoard } from "./NoticeBoard";
 import { RefreshToken } from "./RefreshToken";
 import { Meeting } from "./Meeting";
 import { Vibration } from "./Vibration";
+import { PasswordResetCode } from "./PasswordResetCode";
 
 @Entity({name: "UserAccount"})
 export class UserAccount {
@@ -55,4 +56,7 @@ export class UserAccount {
 
     @OneToMany(() => Vibration, (vibration) => vibration.userAccount)
     vibrations?: Vibration[];
+
+    @OneToMany(() => PasswordResetCode, (passwordResetCode) => passwordResetCode.userAccount)
+    passwordResetCodes?: PasswordResetCode[];
 }

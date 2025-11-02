@@ -33,6 +33,9 @@ export class UserService implements IUserService{
         if(body.email.length > 150)
             throw new Error("O campo de email excedeu o tamanho máximo de 150 caracteres");
 
+        if(body.password.length > 255)
+            throw new Error("O campo de senha excedeu o tamanho máximo de 255 caracteres");
+
         if(body.phoneNumber?.length > 30)
             throw new Error("O campo de número de contato excedeu o tamanho máximo de 150 caracteres");
 

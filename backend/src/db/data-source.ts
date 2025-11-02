@@ -13,6 +13,7 @@ import { Screen }             from "../entities/Screen";
 import { ScreenFunction }     from "../entities/ScreenFunction";
 import { UserAccount }        from "../entities/UserAccount";
 import { Vibration }          from "../entities/Vibration";
+import { PasswordResetCode }  from "../entities/PasswordResetCode";
 
 config();
 
@@ -38,7 +39,8 @@ export const AppDataSource = new DataSource({
         Screen,
         ScreenFunction,
         UserAccount,
-        Vibration
+        Vibration,
+        PasswordResetCode
     ],
     subscribers: [],
     migrations: [],
