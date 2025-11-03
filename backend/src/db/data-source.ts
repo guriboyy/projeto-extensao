@@ -3,7 +3,6 @@ import {config}               from "dotenv";
 import { DataSource }         from "typeorm";
 import { EventBoard }         from "../entities/EventBoard";
 import { Meeting }            from "../entities/Meeting";
-import { MeetingCategory }    from "../entities/MeetingCategory";
 import { NoticeBoard }        from "../entities/NoticeBoard";
 import { RefreshToken }       from "../entities/RefreshToken";
 import { Role }               from "../entities/Role";
@@ -30,7 +29,6 @@ export const AppDataSource = new DataSource({
     entities: [
         EventBoard,
         Meeting,
-        MeetingCategory,
         NoticeBoard,
         RefreshToken,
         Role,

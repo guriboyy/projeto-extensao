@@ -18,6 +18,11 @@ router.get('/get/:userAccountId', (req, res) => {
     userController.getById(req, res);
 });
 
+
+router.get('/get/my-profile', (req, res) => {
+    userController.getMyProfile(req, res);
+});
+
 router.post('/forget-password/send-code', (req, res) => {    
     passwordResetCOdeController.sendCode(req,res)
 });

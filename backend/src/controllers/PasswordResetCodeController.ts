@@ -16,9 +16,10 @@ export class PasswordResetCodeController{
             new Cryptography(),
             new EmailGateway()
         );
+
     }
 
-    public async sendCode(req: Request, res: Response){
+    public async sendCode(req: Request, res: Response): Promise<Response>{
         const { email } = req.body;
 
         if(!email)
@@ -33,7 +34,7 @@ export class PasswordResetCodeController{
         }
     }
 
-    public async validateCode(req: Request, res: Response){
+    public async validateCode(req: Request, res: Response): Promise<Response>{
         const { email, codeRaw } = req.body;
         
         if(!email || !codeRaw)
@@ -48,7 +49,7 @@ export class PasswordResetCodeController{
         }
     }
 
-    public async resetPassword(req: Request, res: Response){
+    public async resetPassword(req: Request, res: Response): Promise<Response>{
         const { email, codeRaw, newPassword } = req.body;
         
         if(!email || !codeRaw || !newPassword)
