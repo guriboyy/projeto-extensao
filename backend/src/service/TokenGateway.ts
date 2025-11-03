@@ -11,6 +11,7 @@ export class TokenGateway implements ITokenGateway{
         const accessToken = jwt.sign({
             id: user.userAccountId,
             email: user.email,
+            role: user.role.name,
             isActive: user.isActive
         }, this.secretKey,{
             expiresIn: '5h'
@@ -25,6 +26,14 @@ export class TokenGateway implements ITokenGateway{
             return true;
         } catch (error) {
             throw new Error('Token inválido ou expirado');
+        }
+    }
+
+    public decodeToken(token: string): string | jwt.JwtPayload | null {
+        try {
+            return jwt.verify(token, this.secretKey);
+        } catch (error) {
+            return null;
         }
     }
 }

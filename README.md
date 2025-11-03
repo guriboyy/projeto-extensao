@@ -78,7 +78,14 @@ DB_NAME=PortalFraternidade
     📚 Documente dependências novas para o time (ex: MIGRATIONS.md, SETUP.md, etc).
 
     ✨ Seja organizado com branches e commits — o futuro você vai agradecer!
+## 🧱 Configuração do Front-End — Passo a Passo
 
+
+1️⃣ Acessar o diretório do front-end e rodar npm install
+2️⃣ Rodar npm run dev
+
+3️⃣ Para criar uma tela, basta seguir os exemplos do projeto, elas ficaram na pasta pages, após isso, para ver ela funcionando com o resto do projeto configure a linha no arquivo routes
+4️⃣ A página components serve para fazer blocos de códigos reutilizaveis como botões, inputs, labels e outras coisas
 ## 🧱 Configuração do Back-End — Passo a Passo
 
 ### 1️⃣ Clonar o repositório

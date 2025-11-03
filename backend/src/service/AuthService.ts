@@ -16,7 +16,12 @@ export class AuthService implements IAuthService{
     ){}
 
     async signIn(email: string, password: string){
-        const findUser = await this.userRepository.findOne({where: {email}});
+        const findUser = await this.userRepository.findOne({
+            where: {email},
+            relations: {
+                role: true
+            }
+        });
 
         if(!findUser)
             throw new Error("Usuário ou senha inválidos!");
@@ -38,7 +43,12 @@ export class AuthService implements IAuthService{
     }
 
     public async renewTokens(userAccountId: number, refreshToken: string): Promise<authResponseDTO>{
-        const findUser = await this.userRepository.findOne({where: {userAccountId}});
+        const findUser = await this.userRepository.findOne({
+            where: {userAccountId},
+            relations: {
+                role: true
+            }
+        });
         const isValidRefreshToken = await this.refreshTokenService.validate(refreshToken);
 
         if(!isValidRefreshToken || !findUser)

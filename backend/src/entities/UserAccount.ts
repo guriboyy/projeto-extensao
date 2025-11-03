@@ -3,6 +3,8 @@ import { Role } from "./Role";
 import { NoticeBoard } from "./NoticeBoard";
 import { RefreshToken } from "./RefreshToken";
 import { Meeting } from "./Meeting";
+import { Vibration } from "./Vibration";
+import { PasswordResetCode } from "./PasswordResetCode";
 
 @Entity({name: "UserAccount"})
 export class UserAccount {
@@ -49,6 +51,30 @@ export class UserAccount {
     @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.userAccount)
     refreshTokens?: RefreshToken[];
 
-    @OneToMany(() => Meeting, (meeting) => meeting.userAccount)
-    meetings?: Meeting[];
+    @OneToMany(() => Vibration, (vibration) => vibration.userAccount)
+    vibrations?: Vibration[];
+
+    @OneToMany(() => PasswordResetCode, (passwordResetCode) => passwordResetCode.userAccount)
+    passwordResetCodes?: PasswordResetCode[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.leaderUserAccount)
+    leaderMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.gospelUserAccount)
+    gospelMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.vibrationUserAccount)
+    vibrationMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.frontDeskUserAccount)
+    frontDeskMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.readingUserAccount)
+    readingMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.passManagerUserAccount)
+    passManagerMeetings?: Meeting[];
+
+    @OneToMany(() => Meeting, (meeting) => meeting.soundAndImageUserAccount)
+    soundAndImageMeetings?: Meeting[];
 }

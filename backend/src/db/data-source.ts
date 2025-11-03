@@ -3,7 +3,6 @@ import {config}               from "dotenv";
 import { DataSource }         from "typeorm";
 import { EventBoard }         from "../entities/EventBoard";
 import { Meeting }            from "../entities/Meeting";
-import { MeetingCategory }    from "../entities/MeetingCategory";
 import { NoticeBoard }        from "../entities/NoticeBoard";
 import { RefreshToken }       from "../entities/RefreshToken";
 import { Role }               from "../entities/Role";
@@ -12,6 +11,8 @@ import { RoleScreenFunction } from "../entities/RoleScreenFunction";
 import { Screen }             from "../entities/Screen";
 import { ScreenFunction }     from "../entities/ScreenFunction";
 import { UserAccount }        from "../entities/UserAccount";
+import { Vibration }          from "../entities/Vibration";
+import { PasswordResetCode }  from "../entities/PasswordResetCode";
 
 config();
 
@@ -28,7 +29,6 @@ export const AppDataSource = new DataSource({
     entities: [
         EventBoard,
         Meeting,
-        MeetingCategory,
         NoticeBoard,
         RefreshToken,
         Role,
@@ -36,7 +36,9 @@ export const AppDataSource = new DataSource({
         RoleScreenFunction,
         Screen,
         ScreenFunction,
-        UserAccount
+        UserAccount,
+        Vibration,
+        PasswordResetCode
     ],
     subscribers: [],
     migrations: [],

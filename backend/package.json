@@ -17,6 +17,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "juice": "^11.0.0",
     "mysql": "^2.18.1",
     "nodemailer": "^7.0.10",
     "reflect-metadata": "^0.2.2",
