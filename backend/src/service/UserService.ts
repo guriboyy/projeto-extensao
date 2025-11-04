@@ -5,6 +5,7 @@ import { UserAccount } from "../entities/UserAccount";
 import { userRequestDTO } from "../dtos/requests/user/userRequestDTO";
 import { IEncryptionGateway } from "../interfaces/gateways/IEncryptionGateway";
 import { Role } from "../entities/Role";
+import { userUpdateRequestDTO } from "../dtos/requests/user/userUpdateRequestDTO";
 
 export class UserService implements IUserService{
 
@@ -100,5 +101,61 @@ export class UserService implements IUserService{
         }));
 
         return result;
+    }
+
+    public async update(userAccountId: number, userAccountRequest: userUpdateRequestDTO): Promise<string>{
+        const findUser = await this.userRepository.findOne({
+                where: {userAccountId: userAccountId},
+                relations: {
+                    role: true  
+                }
+            },
+        );
+        
+        if(!findUser)
+            throw new Error("Nenhum usuário encontrado com este Id");
+
+        if(userAccountRequest.firstName && userAccountRequest.firstName != findUser.firstName){
+            if(userAccountRequest.firstName.length > 150)
+                throw new Error("O campo de nome excedeu o tamanho máximo de 150 caracteres");
+            findUser.firstName = userAccountRequest.firstName.trim();
+        }
+
+        if(userAccountRequest.lastName && userAccountRequest.lastName != findUser.lastName){
+            if(userAccountRequest.lastName.length > 150)
+                throw new Error("O campo de sobrenome excedeu o tamanho máximo de 150 caracteres");
+            findUser.lastName = userAccountRequest.lastName.trim();
+        }
+
+        if(userAccountRequest.email && userAccountRequest.email != findUser.email){
+            if(userAccountRequest.email.length > 150)
+                throw new Error("O campo de email excedeu o tamanho máximo de 150 caracteres");
+            findUser.email = userAccountRequest.email.trim();
+        }
+
+        if (userAccountRequest.phoneNumber !== undefined && userAccountRequest.phoneNumber !== findUser.phoneNumber) {
+            if (userAccountRequest.phoneNumber && userAccountRequest.phoneNumber.length > 30)
+                throw new Error("O campo de número de contato excedeu o tamanho máximo de 30 caracteres");
+            findUser.phoneNumber = userAccountRequest.phoneNumber ? userAccountRequest.phoneNumber.trim() : null;
+        }
+
+        if (userAccountRequest.roleId !== undefined && userAccountRequest.roleId !== findUser.roleId) {
+            const findRole = await this.roleRepository.findOne({ where: { roleId: userAccountRequest.roleId } });
+
+            if (!findRole)
+                throw new Error("Esta role não foi encontrada");
+
+            findUser.role = findRole;
+        }
+
+        if (userAccountRequest.isActive !== undefined && userAccountRequest.isActive !== findUser.isActive) {
+            findUser.isActive = userAccountRequest.isActive;
+        }
+
+        findUser.updatedAt = new Date();
+
+        await this.userRepository.save(findUser);
+
+        return "Usuário editado com sucesso";
     }
 }

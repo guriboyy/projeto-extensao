@@ -18,6 +18,9 @@ router.get('/get/:userAccountId', (req, res) => {
     userController.getById(req, res);
 });
 
+router.put('/update/:userAccountId', (req, res) => {
+    userController.update(req, res);
+});
 
 router.get('/get/my-profile', (req, res) => {
     userController.getMyProfile(req, res);
