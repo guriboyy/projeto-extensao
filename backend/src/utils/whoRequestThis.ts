@@ -7,9 +7,15 @@ export class WhoRequestThis implements IWhoRequestThis{
         private tokenGateway: ITokenGateway
     ){}
     
-    public getUserAccountIdByThisRequest(req: Request): number {
-        const accessToken = req.headers['authorization'].split(' ')[1];
-        const user: any = this.tokenGateway.decodeToken(accessToken);
-        return user.id as number;
+    public getUserAccountIdByThisRequest(req: Request): number | null {
+        try{
+            const accessToken = req.headers['authorization'].split(' ')[1];
+            const user: any = this.tokenGateway.decodeToken(accessToken);
+            return user.id as number;
+        }
+        catch(error){
+            return null;
+        }
+
     }
 }

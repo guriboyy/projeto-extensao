@@ -262,4 +262,58 @@ export class MeetingService implements IMeetingService{
 
         return "Reunião deletada com sucesso";
     }
+
+    public async getById(meetingId: number): Promise<meetingResponseDTO>{
+        const findMeeting = await this.meetingRepository.findOne({
+            where: {meetingId: meetingId},
+            relations: {
+                leaderUserAccount: true,
+                gospelUserAccount: true,
+                vibrationUserAccount: true,
+                frontDeskUserAccount: true,
+                readingUserAccount: true,
+                passManagerUserAccount: true,
+                soundAndImageUserAccount: true
+            }
+        });
+
+        if(!findMeeting)
+            throw new Error("Reunião não encontrada");
+
+        const resultFormatted = {
+            meetingId: findMeeting.meetingId,
+            meetingDate: findMeeting.meetingDate,
+            themeGospel: findMeeting.themeGospel,
+            leader: {
+                userAccountId: findMeeting.leaderUserAccount.userAccountId,
+                name: findMeeting.leaderUserAccount.lastName + " " + findMeeting.leaderUserAccount.lastName
+            },
+            gospel: {
+                userAccountId: findMeeting.gospelUserAccount.userAccountId,
+                name: findMeeting.gospelUserAccount.lastName + " " + findMeeting.gospelUserAccount.lastName
+            },
+            vibration: {
+                userAccountId: findMeeting.vibrationUserAccount.userAccountId,
+                name: findMeeting.vibrationUserAccount.lastName + " " + findMeeting.vibrationUserAccount.lastName
+            },
+            frontDesk: {
+                userAccountId: findMeeting.frontDeskUserAccount.userAccountId,
+                name: findMeeting.frontDeskUserAccount.lastName + " " + findMeeting.frontDeskUserAccount.lastName
+            },
+            reading: {
+                userAccountId: findMeeting.readingUserAccount.userAccountId,
+                name: findMeeting.readingUserAccount.lastName + " " + findMeeting.readingUserAccount.lastName
+            },
+            passManager: {
+                userAccountId: findMeeting.passManagerUserAccount.userAccountId,
+                name: findMeeting.passManagerUserAccount.lastName + " " + findMeeting.passManagerUserAccount.lastName
+            },
+            soundAndImage: {
+                userAccountId: findMeeting.soundAndImageUserAccount.userAccountId,
+                name: findMeeting.soundAndImageUserAccount.lastName + " " + findMeeting.soundAndImageUserAccount.lastName
+            }
+        } as meetingResponseDTO;
+
+        return resultFormatted;
+    }
 }

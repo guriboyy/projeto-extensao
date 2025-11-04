@@ -16,6 +16,10 @@ router.get('/get-all-calendar/:numberMonth', (req, res) => {
     meetingController.getAllCalendar(req,res)
 });
 
+router.get('/get/:meetingId', (req, res) => {
+    meetingController.getById(req, res);
+});
+
 router.put('/update/:meetingId', (req, res) => {
     meetingController.update(req, res);
 });

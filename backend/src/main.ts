@@ -7,6 +7,7 @@ import { router as  userRoutes }      from './routes/userRoute';
 import { router as  roleRoutes }      from './routes/roleRoute';
 import { router as  vibrationRoutes } from './routes/vibrationRoute';
 import { router as meetingRoutes }    from './routes/meetingRoute';
+import { router as noticeBoardRoutes }from './routes/noticeBoardRoutes';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/role", roleRoutes);
 app.use("/api/v1/vibration", vibrationRoutes);
 app.use("/api/v1/meeting", meetingRoutes);
+app.use("/api/v1/notice-board", noticeBoardRoutes);
 
 
 AppDataSource.initialize()

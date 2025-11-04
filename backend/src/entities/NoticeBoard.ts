@@ -10,13 +10,13 @@ export class NoticeBoard {
     @Column({name: "Description", nullable: false, type: "varchar"})
     description: string;
 
-    @Column({name: "UserAccountId", nullable: true, type: "int"})
-    userAccountId?: number;
+    @Column({name: "UserAccountId", nullable: false, type: "int"})
+    userAccountId: number;
 
-    @CreateDateColumn({name: "PostedDate", nullable: false})
+    @CreateDateColumn({name: "PostedDate", nullable: false, type: "datetime"})
     postedDate: Date;
 
-    @Column({name: "EndDate", nullable: true, type: "timestamp"})
+    @Column({name: "EndDate", nullable: true, type: "datetime"})
     endDate?: Date;
 
     @ManyToOne(() => UserAccount, (userAccount) => userAccount.noticeBoards)
