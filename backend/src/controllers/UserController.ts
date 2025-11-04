@@ -88,6 +88,41 @@ export class UserController{
         }
     }
 
+
+    public async update(req: Request, res: Response): Promise<Response> {
+        const { userAccountId } = req.params;
+        const { 
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            roleId,
+            isActive
+        } = req.body;
+
+        if(!userAccountId)
+            return res.status(400).json({message: "O Id do usuário é necessário para poder atualizar"});
+        
+        try{
+            const result = await this.userService.update(
+                parseInt(userAccountId), 
+                {
+                    firstName,
+                    lastName,
+                    email,
+                    phoneNumber,
+                    roleId,
+                    isActive
+                }
+            );
+
+            return res.status(200).json({data: result});
+        }
+        catch(error){
+            return res.status(500).json({message: error.message})
+        }
+    }
+
     public async getMyProfile(req: Request, res: Response): Promise<Response> {
         const userAccountId = this.whoRequestThis.getUserAccountIdByThisRequest(req);
 

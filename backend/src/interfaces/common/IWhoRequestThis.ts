@@ -1,5 +1,5 @@
 import { Request } from "express";
 
 export interface IWhoRequestThis{
-    getUserAccountIdByThisRequest?: (req: Request) => number; 
+    getUserAccountIdByThisRequest?: (req: Request) => number | null; 
 }

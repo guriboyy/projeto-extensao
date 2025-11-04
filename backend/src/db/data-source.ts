@@ -13,16 +13,23 @@ import { ScreenFunction }     from "../entities/ScreenFunction";
 import { UserAccount }        from "../entities/UserAccount";
 import { Vibration }          from "../entities/Vibration";
 import { PasswordResetCode }  from "../entities/PasswordResetCode";
+import mysql2 from "mysql2/promise"; 
 
 config();
 
+const dbName = process.env.DATABASE_DBNAME ?? "portalfraternidade";
+const dbHost = process.env.DATABASE_HOST ?? "localhost";
+const dbPort = process.env.DATABASE_PORT ? parseInt(process.env.DATABASE_PORT) : 3306;
+const dbUser = process.env.DATABASE_USERNAME ?? "root";
+const dbPass = process.env.DATABASE_PASSWORD ?? "";
+
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: process.env.DATABASE_HOST ?? "localhost",
-    port: process.env.DATABASE_PORT ? parseInt(process.env.DATABASE_PORT) : 3306,
-    username: process.env.DATABASE_USERNAME ?? "root",
-    password: process.env.DATABASE_PASSWORD ?? "",
-    database: process.env.DATABASE_DBNAME ?? "portalfraternidade",
+    host: dbHost,
+    port: dbPort,
+    username: dbUser,
+    password: dbPass,
+    database: dbName,
     synchronize: false,
     logging: false,
     charset: "utf8mb4_unicode_ci",
@@ -42,4 +49,37 @@ export const AppDataSource = new DataSource({
     ],
     subscribers: [],
     migrations: [],
-})
+});
+
+export async function initializeDatabase() {
+    const connection = await mysql2.createConnection({
+        host: dbHost,
+        port: dbPort,
+        user: dbUser,
+        password: dbPass,
+    });
+
+    await connection.query(`
+        CREATE DATABASE IF NOT EXISTS \`${dbName}\`
+        DEFAULT CHARACTER SET utf8mb4
+        DEFAULT COLLATE utf8mb4_general_ci;
+    `);
+
+    AppDataSource.initialize()
+    .then(async () => {
+        console.log("Database success initalize");
+        
+        await connection.query(
+            `use ${dbName};`
+        );
+        await connection.query(
+            `INSERT INTO Role(Name) VALUES ('Admin'), ('Obreiro'), ('Membro');`
+        );
+    })
+    .catch((error) => {
+        console.log(`Error iniatialize Database: ${error}`);
+    })
+    .finally(async ()=> {
+        await connection.end();
+    })
+}

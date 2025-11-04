@@ -36,7 +36,8 @@ export class AuthService implements IAuthService{
         await this.refreshTokenService.revokeAllToken(findUser.userAccountId);
         const tokens: authResponseDTO = {
             accessToken: this.tokenGateway.create(findUser),
-            refreshToken: await this.refreshTokenService.create(findUser.userAccountId)
+            refreshToken: await this.refreshTokenService.create(findUser.userAccountId),
+            userAccountId: findUser.userAccountId
         };
 
         return tokens;
@@ -58,7 +59,8 @@ export class AuthService implements IAuthService{
 
         const tokens: authResponseDTO = {
             accessToken: this.tokenGateway.create(findUser),
-            refreshToken: await this.refreshTokenService.create(findUser.userAccountId)
+            refreshToken: await this.refreshTokenService.create(findUser.userAccountId),
+            userAccountId: findUser.userAccountId
         };
 
         return tokens;

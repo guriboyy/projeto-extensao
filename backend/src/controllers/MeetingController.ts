@@ -106,7 +106,7 @@ export class MeetingController{
         } = req.body;
 
         if(!meetingId)
-            return res.status(400).json({message: "O Id da reunião é necessári para poder deletar"});
+            return res.status(400).json({message: "O Id da reunião é necessário para poder atualizar"});
 
         try{
             const result = await this.meetingService.update(
@@ -146,4 +146,20 @@ export class MeetingController{
             return res.status(500).json({message: error.message});
         }
     }
+
+    public async getById(req: Request, res: Response): Promise<Response>{
+        const { meetingId } = req.params;
+
+        if(!meetingId)
+            return res.status(400).json({message: "O Id da reunião é necessário para poder obter a reunião"});
+
+        try{
+            const result = await this.meetingService.getById(parseInt(meetingId));
+            return res.status(200).json({data: result});
+        }
+        catch(error){
+            return res.status(500).json({message: error.message});
+        }
+    }
+    
 }
