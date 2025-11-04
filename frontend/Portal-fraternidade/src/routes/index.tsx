@@ -10,7 +10,7 @@ function AppRoutes(): JSX.Element {
     <BrowserRouter>    
       <Routes>   
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashBoard />} />        
+        <Route path="/Dashboard" element={<DashBoard />} />        
       </Routes>
     </BrowserRouter>
   );
