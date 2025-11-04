@@ -30,8 +30,8 @@ export const AppDataSource = new DataSource({
     username: dbUser,
     password: dbPass,
     database: dbName,
-    synchronize: true,
-    logging: true,
+    synchronize: false,
+    logging: false,
     charset: "utf8mb4_unicode_ci",
     entities: [
         EventBoard,
