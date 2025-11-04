@@ -2,10 +2,10 @@ import { api } from "./api";
 import type { SignInResponse } from "../types/api";
 
 
-export async function loginUser(email:string, password:string) {
-    const response:SignInResponse = await api.post("/auth/sign-in", {email, password})
+export async function loginUser(email:string, password:string):Promise<any> {
+    const response:SignInResponse = await api.post("/auth/sign-in", {email, password})    
     .then(function(response) {
-        console.log(response)
+        console.log(response.data)
         return response.data
     })
     .catch(function (error){
@@ -13,6 +13,6 @@ export async function loginUser(email:string, password:string) {
         return response
     })
     
-    
+    return response;
 }
 
