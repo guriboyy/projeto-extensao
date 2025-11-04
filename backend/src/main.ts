@@ -1,7 +1,7 @@
 import express                        from "express";
 import cors                           from "cors";
 import dotenv                         from 'dotenv';
-import {AppDataSource}                from "./db/data-source";
+import {initializeDatabase}           from "./db/data-source";
 import { router as  authRoutes }      from './routes/authRoute';
 import { router as  userRoutes }      from './routes/userRoute';
 import { router as  roleRoutes }      from './routes/roleRoute';
@@ -24,14 +24,8 @@ app.use("/api/v1/vibration", vibrationRoutes);
 app.use("/api/v1/meeting", meetingRoutes);
 app.use("/api/v1/notice-board", noticeBoardRoutes);
 
+initializeDatabase();
 
-AppDataSource.initialize()
-.then(() => {
-    console.log("Database success initalize");
-})
-.catch((error) => {
-    console.log(`Error iniatialize Database: ${error}`);
-})
 
 app.listen(PORT, () => {
     console.log(`Server is running in http://localhost:${PORT}`);
