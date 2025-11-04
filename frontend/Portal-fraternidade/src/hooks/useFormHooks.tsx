@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {loginUser} from "../services/loginService"
+import {getPermissionByUserId} from "../services/userService"
 import { useNavigate } from "react-router-dom";
 
 export function useForm(){
@@ -17,9 +18,11 @@ export function useForm(){
             
         try {
             const data = await loginUser(email, passwd);
-            console.log("Usuário logado:", data);
+            console.log("Usuário logado:", data.accessToken);
+            const permissions = await getPermissionByUserId(data.accessToken)
+            console.log(permissions)
         
-            navigate("/dashboard");
+            navigate("/Dashboard");
         } catch (err: any) {
             setError(err.response?.data?.message || "Erro ao logar");
         } finally {
