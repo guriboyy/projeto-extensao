@@ -73,7 +73,10 @@ export class UserService implements IUserService{
             email: finUser.email,
             phoneNumber: finUser.phoneNumber,
             isActive: finUser.isActive,
-            roleName: finUser.role.name,
+            role: {
+                roleId: finUser.role.roleId,
+                name: finUser.role.name,
+            },
             createdAt: finUser.createdAt,
             updatedAt: finUser.updatedAt
         }; 
@@ -95,7 +98,10 @@ export class UserService implements IUserService{
             email: item.email,
             phoneNumber: item.phoneNumber,
             isActive: item.isActive,
-            roleName: item.role.name,
+            role: {
+                roleId: item.role.roleId,
+                name: item.role.name,
+            },
             createdAt: item.createdAt,
             updatedAt: item.updatedAt
         }));

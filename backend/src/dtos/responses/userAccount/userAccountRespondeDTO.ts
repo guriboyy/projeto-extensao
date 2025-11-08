@@ -5,7 +5,10 @@ export type userAccountResponseDTO = {
     email: string;
     phoneNumber?: string;
     isActive: boolean;
-    roleName: string;
+    role: {
+        roleId: number,
+        name: string;
+    };
     createdAt: Date;
     updatedAt?: Date;
 }
