@@ -12,8 +12,6 @@ export class Cryptography implements IEncryptionGateway{
     };
 
     public async match(passwordRaw: string, passwordEncrypt: string){
-        console.log(passwordEncrypt)
-        console.log(passwordRaw)
         let result = await bcrypt.compare(passwordRaw, passwordEncrypt);
         return result;
     };
