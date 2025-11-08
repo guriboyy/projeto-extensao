@@ -5,6 +5,7 @@ import { Meeting } from "../entities/Meeting";
 import { UserAccount } from "../entities/UserAccount";
 import { createMeetingResponseDTO } from "../dtos/requests/meeting/createMeetingRequestDTO";
 import { updateMeetingResponseDTO } from "../dtos/requests/meeting/updateMeetingRequestDTO";
+import { mySchedulesResponseDTO } from "../dtos/responses/meeting/mySchedulesResponseDTO";
 
 export class MeetingService implements IMeetingService{
 
@@ -65,7 +66,7 @@ export class MeetingService implements IMeetingService{
     }
 
 
-    public async mySchedules(userAccuntId: number): Promise<meetingResponseDTO[]>{
+    public async mySchedules(userAccuntId: number): Promise<mySchedulesResponseDTO[]>{
         const findUserAccount = await this.userRepository.findOne({
             where: {userAccountId: userAccuntId}
         });
@@ -95,41 +96,27 @@ export class MeetingService implements IMeetingService{
             .andWhere('meeting.meetingDate > :now', { now: new Date() })
             .getMany();
 
-        const resultFormatted: meetingResponseDTO[] = mySchedules.map((item) => ({
-            meetingId: item.meetingId,
-            meetingDate: item.meetingDate,
-            themeGospel: item.themeGospel,
-            leader: {
-                userAccountId: item.leaderUserAccount.userAccountId,
-                name: item.leaderUserAccount.lastName + " " + item.leaderUserAccount.lastName
-            },
-            gospel: {
-                userAccountId: item.gospelUserAccount.userAccountId,
-                name: item.gospelUserAccount.lastName + " " + item.gospelUserAccount.lastName
-            },
-            vibration: {
-                userAccountId: item.vibrationUserAccount.userAccountId,
-                name: item.vibrationUserAccount.lastName + " " + item.vibrationUserAccount.lastName
-            },
-            frontDesk: {
-                userAccountId: item.frontDeskUserAccount.userAccountId,
-                name: item.frontDeskUserAccount.lastName + " " + item.frontDeskUserAccount.lastName
-            },
-            reading: {
-                userAccountId: item.readingUserAccount.userAccountId,
-                name: item.readingUserAccount.lastName + " " + item.readingUserAccount.lastName
-            },
-            passManager: {
-                userAccountId: item.passManagerUserAccount.userAccountId,
-                name: item.passManagerUserAccount.lastName + " " + item.passManagerUserAccount.lastName
-            },
-            soundAndImage: {
-                userAccountId: item.soundAndImageUserAccount.userAccountId,
-                name: item.soundAndImageUserAccount.lastName + " " + item.soundAndImageUserAccount.lastName
-            }
-        }));
+        const result: mySchedulesResponseDTO[] = mySchedules.map(item => {
+            const roles = [
+                { role: 'leader', id: item.leaderUserAccount.userAccountId },
+                { role: 'gospel', id: item.gospelUserAccount.userAccountId },
+                { role: 'vibration', id: item.vibrationUserAccount.userAccountId },
+                { role: 'frontDesk', id: item.frontDeskUserAccount.userAccountId },
+                { role: 'reading', id: item.readingUserAccount.userAccountId },
+                { role: 'passManager', id: item.passManagerUserAccount.userAccountId },
+                { role: 'soundAndImage', id: item.soundAndImageUserAccount.userAccountId },
+            ];
 
-        return resultFormatted;
+            const myRole = roles.find(r => r.id === userAccuntId);
+
+            return {
+                meetingId: item.meetingId,
+                meetingDate: item.meetingDate,
+                role: myRole ? myRole.role : null
+            };
+        });
+
+        return result.filter(r => r.role !== null);
     }
 
 
