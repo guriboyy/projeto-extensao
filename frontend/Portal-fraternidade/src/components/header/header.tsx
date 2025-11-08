@@ -15,7 +15,7 @@ export default function Header(){
             <Nav.Link href="/ManageUsers">Gerenciar Membros</Nav.Link>            
           </Nav>
           <Nav>
-            <Nav.Link href="#pricing">Sair</Nav.Link>
+            <Nav.Link href="/login">Sair</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

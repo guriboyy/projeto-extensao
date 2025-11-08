@@ -72,9 +72,9 @@ export async function initializeDatabase() {
         await connection.query(
             `use ${dbName};`
         );
-        await connection.query(
-            `INSERT INTO Role(Name) VALUES ('Admin'), ('Obreiro'), ('Membro');`
-        );
+        // await connection.query(
+        //     `INSERT INTO Role(Name) VALUES ('Admin'), ('Obreiro'), ('Membro');`
+        // );
     })
     .catch((error) => {
         console.log(`Error iniatialize Database: ${error}`);
