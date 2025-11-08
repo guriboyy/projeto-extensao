@@ -3,11 +3,12 @@ import {loginUser} from "../services/loginService"
 import {getPermissionByUserId} from "../services/userService"
 import { useNavigate } from "react-router-dom";
 
+
 export function useForm(){
 
     const [email, setEmail] = useState('')
     const [passwd, setPasswd] = useState('')
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);    
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -17,13 +18,12 @@ export function useForm(){
         setError(null);
             
         try {
-            const data = await loginUser(email, passwd);
-            console.log("Usuário logado:", data.accessToken);
-            const permissions = await getPermissionByUserId(data.accessToken)
-            console.log(permissions)
-        
+            const data = await loginUser(email, passwd);            
+            const permissions = await getPermissionByUserId(data.accessToken)     
+            console.log(data.accessToken)       
+            localStorage.setItem("token", data.accessToken);
             navigate("/Dashboard");
-        } catch (err: any) {
+        } catch (err: any) {            
             setError(err.response?.data?.message || "Erro ao logar");
         } finally {
             setLoading(false);
