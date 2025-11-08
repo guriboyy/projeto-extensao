@@ -1,5 +1,5 @@
 export type createMeetingResponseDTO = {
-    meetingDate: Date;
+    meetingDate: string;
     leaderAccountId: number;
     gospelUserAccountId: number; 
     vibrationUserAccountId: number;

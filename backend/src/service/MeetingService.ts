@@ -22,6 +22,11 @@ export class MeetingService implements IMeetingService{
         const findPassManagerUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.passManagerUserAccountId}});
         const findSoundAndImageUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.soundAndImageUserAccountId}});
 
+        const [datePart, timePart] = meetingRequest.meetingDate.split(" ");
+        const [year, month, day] = datePart.split("-").map(Number);
+        const [hour, minute] = timePart.split(":").map(Number);
+        const localDate = new Date(year, month - 1, day, hour, minute);
+
         if(!findLeaderUserAccoount)
             throw new Error("Não foi possível encontrar o usuário para ser o Dirigente");
 
@@ -52,7 +57,7 @@ export class MeetingService implements IMeetingService{
             passManagerUserAccountId: findPassManagerUserAccoount.userAccountId,
             soundAndImageUserAccountId: findSoundAndImageUserAccoount.userAccountId,
             themeGospel: meetingRequest.themeGospel,
-            meetingDate: new Date(meetingRequest.meetingDate)
+            meetingDate: localDate
         });
 
         await this.meetingRepository.save(createMeeting);
@@ -188,8 +193,14 @@ export class MeetingService implements IMeetingService{
         if(!findMeeting)
             throw new Error("Nenhuma reunião foi encontrada");
 
-        if(meetingRequest.meetingDate && meetingRequest.meetingDate != findMeeting.meetingDate){
-            findMeeting.meetingDate = meetingRequest.meetingDate;
+
+        const [datePart, timePart] = meetingRequest.meetingDate.split(" ");
+        const [year, month, day] = datePart.split("-").map(Number);
+        const [hour, minute] = timePart.split(":").map(Number);
+        const localDate = new Date(year, month - 1, day, hour, minute);
+
+        if(meetingRequest.meetingDate != null){
+            findMeeting.meetingDate = localDate;
         }
 
         if(meetingRequest.leaderUserAccountId && meetingRequest.leaderUserAccountId != findMeeting.leaderUserAccountId){
