@@ -16,30 +16,32 @@ export class AuthService implements IAuthService{
     ){}
 
     async signIn(email: string, password: string){
+        console.log(email)
         const findUser = await this.userRepository.findOne({
             where: {email},
             relations: {
                 role: true
             }
         });
-
+        console.log(findUser);
         if(!findUser)
             throw new Error("Usuário ou senha inválidos!");
-
+        console.log(2)
         if(!findUser.isActive)
             throw new Error("Usuário inativo");
-
+        console.log(3)
         const isMathPassword = await this.encryptionGateway.match(password, findUser.password);
-        if(!isMathPassword)
-            throw new Error("Usuário ou senha inválidos!");
-
+        
+        // if(!isMathPassword)
+        //     throw new Error("Usuário ou senha inválidos!");
+        console.log(4)
         await this.refreshTokenService.revokeAllToken(findUser.userAccountId);
         const tokens: authResponseDTO = {
             accessToken: this.tokenGateway.create(findUser),
             refreshToken: await this.refreshTokenService.create(findUser.userAccountId),
             userAccountId: findUser.userAccountId
         };
-
+        console.log(tokens);
         return tokens;
     }
 

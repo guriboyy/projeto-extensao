@@ -1,7 +1,13 @@
+import { ManageDashBoard } from "../../components/container/container";
+import Header from "../../components/header/header";
 
 function DashBoard() {
     return (
-        <h1>Trust</h1>
+        <>
+            <Header></Header>
+            <ManageDashBoard></ManageDashBoard>
+        </>
+       
     )
 }
 

@@ -10,7 +10,7 @@ export async function loginUser(email:string, password:string):Promise<any> {
     })
     .catch(function (error){
         console.log(error)
-        return response
+        throw error
     })
     
     return response;
