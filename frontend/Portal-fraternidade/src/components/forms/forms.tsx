@@ -6,6 +6,8 @@ import {useForm} from '../../hooks/useFormHooks'
 import { Link } from 'react-router-dom';
 import { useManageUsersChildren } from '../../hooks/useManageUsersHook';
 import { Col, Row } from 'react-bootstrap';
+import { useEvent } from '../../hooks/useEventHook';
+import { TemplateDate } from '../../utils/utils';
 
 export function FormsDefault() {
     const {setEmail, setPasswd,handleForm, error} = useForm();
@@ -112,7 +114,7 @@ export function FormsManageUser() {
               <Form.Label>Telefone / WhatsApp</Form.Label>
               <Form.Control
                 type="text"
-                name="cel"
+                name="phoneNumber"
                 value={editUsers.phoneNumber ?? ""}
                 onChange={handleChange}
               />
@@ -137,6 +139,79 @@ export function FormsManageUser() {
         <div className="d-flex justify-content-end gap-2">
           <Button variant="secondary" type='button' onClick={() => handleNavigate()}>Cancelar</Button>
           <Button type="submit" variant="primary">Salvar Membro</Button>
+        </div>
+      </Form>
+    </div>
+  );
+}
+
+export function FormsCreateEvent() {
+  const {handleChange,event, handleSubmit, handleNavigate} = useEvent();
+  const {formatForInputDatetimeLocal} = TemplateDate();
+   return (
+    <div className="container mt-4 p-4 border rounded shadow-sm bg-white">
+      <h4 className="mb-4">Novo Evento</h4>
+
+      <Form onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Título do Evento</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                value={event.title}
+                onChange={handleChange}                 
+                required
+              />
+            </Form.Group>
+          </Col>
+
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Data</Form.Label>
+              <Form.Control
+                type="date"
+                name="eventDate"
+                value={event.eventDate}
+                onChange={handleChange}                 
+                required
+              />
+            </Form.Group>
+          </Col>        
+        </Row>
+        <Row className='mb-3'>
+           <Col md={6}>
+            <Form.Group>
+              <Form.Label>Descrição *</Form.Label>
+              <Form.Control
+                type="text"
+                name="description"
+                value={event.description}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Hora *</Form.Label>
+              <Form.Control
+                type="time"
+                name="time"
+                value={event.time}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+          
+          
+        </Row>
+
+        <div className="d-flex justify-content-end gap-2">
+          <Button variant="secondary" type='button' onClick={() => handleNavigate()}>Cancelar</Button>
+          <Button type="submit" variant="primary">Criar Evento</Button>
         </div>
       </Form>
     </div>

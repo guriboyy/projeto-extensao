@@ -10,7 +10,7 @@ export default function Header(){
           <Nav className="me-auto">
             <Nav.Link href="/Dashboard">Dashboard</Nav.Link>
             <Nav.Link href="/Agenda">Agenda</Nav.Link>
-            <Nav.Link href="/Eventos">Eventos</Nav.Link>
+            <Nav.Link href="/Events">Eventos</Nav.Link>
             <Nav.Link href="/Biblioteca">Biblioteca</Nav.Link>
             <Nav.Link href="/ManageUsers">Gerenciar Membros</Nav.Link>            
           </Nav>

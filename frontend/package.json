@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@schedule-x/react": "^3.3.0",
+    "@schedule-x/theme-default": "^3.3.0",
+    "react-big-calendar": "^1.19.4",
+    "temporal-polyfill": "^0.3.0"
+  }
+}

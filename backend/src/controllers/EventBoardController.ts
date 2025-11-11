@@ -77,7 +77,7 @@ export class EventBoardController{
         }
     }
 
-    public async create(req: Request, res: Response): Promise<Response>{
+    public async create(req: Request, res: Response): Promise<Response>{        
         const {title, description, eventDate} = req.body;
 
         if(!title || !eventDate)

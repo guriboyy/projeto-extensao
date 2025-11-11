@@ -65,7 +65,7 @@ export function useManageUsersChildren() {
             email: client.data.email ?? "",
             phoneNumber: client.data.phoneNumber ?? "",
             status: client.data.isActive,
-            role: String(client.data.role)
+            role: String(client.data.role.roleId)
           };    
           
           setEditUsers(userData); 
