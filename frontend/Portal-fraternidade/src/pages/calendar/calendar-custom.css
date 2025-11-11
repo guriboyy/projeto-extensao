@@ -1,0 +1,23 @@
+.rbc-event {
+  background-color: #0d6efd !important;
+  color: white !important;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.rbc-today {
+  background: rgba(0, 123, 255, 0.08) !important;
+}
+
+.rbc-month-view {
+  border-radius: 8px !important;
+}
+
+.rbc-header {
+  font-weight: 600;
+}
+
+.calendar {
+  height: 80vh;
+}

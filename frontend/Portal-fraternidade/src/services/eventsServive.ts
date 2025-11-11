@@ -1,9 +1,9 @@
 import { api } from "./api";
-import type {  } from "../types/api";
+import type { Event } from "../types/api";
 
 
 export async function getEvents():Promise<any> {
-    const response = await api.get("/auth/sign-in")    
+    const response = await api.get("/event-board/get-all")    
     .then(function(response) {
         console.log(response.data)
         return response.data
@@ -16,8 +16,18 @@ export async function getEvents():Promise<any> {
     return response;
 }
 
-export async function createEvent(email:string, password:string):Promise<any> {
-    const response: = await api.post("/auth/sign-in", {email, password})    
+export async function createEvent(event:Event, token: string):Promise<any> {
+    console.log(event)
+    const response = await api.post("/event-board/create",
+         {
+            title: event.title,
+            description: event.description,
+            eventDate: event.eventDate
+    }, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })    
     .then(function(response) {
         console.log(response.data)
         return response.data

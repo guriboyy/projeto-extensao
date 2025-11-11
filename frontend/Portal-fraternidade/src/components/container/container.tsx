@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button, Table, Card } from "react-bootstrap";
 import { useManageUsers } from "../../hooks/useManageUsersHook";
-import { MyNoticesCard, MyScheduleCard } from "../cards/event";
+import { EventCard, MyNoticesCard, MyScheduleCard } from "../cards/event";
+import { useEvent } from "../../hooks/useEventHook";
 
 export function ContainerManageUsers() {
     const {manageUsers, handleNavigate} = useManageUsers();
@@ -51,6 +52,7 @@ export function ContainerManageUsers() {
 }
 
 export function ManageEvents() {
+    const {eventsList} = useEvent()
     return (
        <Container className="mt-5 mx-auto px-4 d-flex justify-content-center">
         <div className="w-100" style={{ maxWidth: "900px" }}>
@@ -63,7 +65,17 @@ export function ManageEvents() {
               <Col xs="auto">
                 <Button variant="primary" href="/CreateEvent" >Novo Evento</Button>
               </Col>
-            </Row>            
+            </Row> 
+            <Row>
+              {
+                eventsList?.data.map((t, index) => (
+                  <EventCard category={t.title}
+                  title={t.title}
+                  date={t.eventDate}
+                  description={t.description}></EventCard>
+                ))
+              }
+            </Row>           
           </Card.Body>
         </Card>
       </div>
@@ -82,35 +94,27 @@ export function ManageDashBoard() {
                 <h4 className="fw-bold border-bottom pb-2">Dashboard</h4>
               </Col>              
             </Row>
-              <Row className="g-4">
-                 <Col md={6}>
-        <MyScheduleCard
-          tasks={[
-            { date: "02 de Julho (Terça)", title: "Vibrações" },
-            { date: "16 de Julho (Terça)", title: "Dirigente Passe" },
-            { date: "23 de Julho (Terça)", title: "Leitura" },
-          ]}
-        />
-      </Col>
-
-      <Col md={6}>
-        <MyNoticesCard
-          notices={[
-            {
-              text: "A secretaria estará fechada nesta sexta-feira (25/10) para balanço.",
-              author: "Admin",
-              date: "23/10/2025"
-            },
-            {
-              text: "Início da campanha do agasalho. Deixe sua doação na recepção.",
-              author: "Admin",
-              date: "20/10/2025"
-            }
-          ]}
-        />
-      </Col>
-            </Row>
-            
+            <Row className="g-4">
+              <Col md={6}>
+                <MyScheduleCard/>
+              </Col>
+              <Col md={6}>
+                <MyNoticesCard
+                  notices={[
+                    {
+                      text: "A secretaria estará fechada nesta sexta-feira (25/10) para balanço.",
+                      author: "Admin",
+                      date: "23/10/2025"
+                    },
+                    {
+                      text: "Início da campanha do agasalho. Deixe sua doação na recepção.",
+                      author: "Admin",
+                      date: "20/10/2025"
+                    }
+                  ]}
+                />
+              </Col>
+            </Row>           
           </Card.Body>
         </Card>
       </div>

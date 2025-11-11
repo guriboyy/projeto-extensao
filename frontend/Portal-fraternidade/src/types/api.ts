@@ -1,3 +1,5 @@
+import type React from "react";
+
 export interface SignInResponse {
     accessToken : string;
     refreshToken : string;
@@ -44,6 +46,17 @@ export interface UserFormCreate {
   password: string;  
 };
 
+export interface Schedules {
+  meetingId: number,
+  meetingDate: string,
+  role: string
+}
+
+export interface ScheduleResponse {
+    data: Schedules[] 
+    setSchedule: React.Dispatch<React.SetStateAction<Schedules[]>>
+}
+
 export interface UserForm {
   name: string;
   lastName: string;
@@ -57,4 +70,16 @@ export interface UserForm {
 export interface UserManagerResponse {
     data: User[]
     setManageUsers: React.Dispatch<React.SetStateAction<User[]>>;
+}
+
+export interface Event {
+  title: string,
+  eventDate: string,
+  time: string,
+  description: string
+}
+
+export interface EventsReponse {
+  data: Event[],
+  setEventsList: React.Dispatch<React.SetStateAction<Event[]>>;
 }
