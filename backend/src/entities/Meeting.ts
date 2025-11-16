@@ -7,6 +7,9 @@ export class Meeting {
     @PrimaryGeneratedColumn({name: "MeetingId"})
     meetingId: number;
 
+    @Column({name: "TitleMeeting", nullable: false, type: "varchar"})
+    titleMeeting: string;
+
     @Column({name: "MeetingDate", nullable: false, type: "timestamp"})
     meetingDate: Date;
 

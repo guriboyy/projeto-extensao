@@ -1,4 +1,5 @@
 export interface meetingResponseDTO{
+    titleMeeting: string;
     meetingId: number;
     meetingDate: Date;
     themeGospel: string;

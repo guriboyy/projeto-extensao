@@ -41,6 +41,7 @@ export class MeetingController{
 
     public async create(req: Request, res: Response): Promise<Response>{
         const {
+            titleMeeting,
             meetingDate,
             leaderAccountId,
             gospelUserAccountId, 
@@ -59,6 +60,7 @@ export class MeetingController{
 
         try{
             const result = await this.meetingService.createMeeting({
+                titleMeeting,
                 meetingDate,
                 leaderAccountId,
                 gospelUserAccountId, 
@@ -94,6 +96,7 @@ export class MeetingController{
     public async update(req: Request, res: Response): Promise<Response>{
         const { meetingId } = req.params;
         const {
+            titleMeeting,
             meetingDate,
             leaderUserAccountId,
             gospelUserAccountId, 
@@ -112,6 +115,7 @@ export class MeetingController{
             const result = await this.meetingService.update(
                 parseInt(meetingId), 
                 {
+                    titleMeeting,
                     meetingDate,
                     leaderUserAccountId,
                     gospelUserAccountId, 

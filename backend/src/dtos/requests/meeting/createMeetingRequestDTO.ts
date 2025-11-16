@@ -1,4 +1,5 @@
 export type createMeetingResponseDTO = {
+    titleMeeting: string;
     meetingDate: string;
     leaderAccountId: number;
     gospelUserAccountId: number; 

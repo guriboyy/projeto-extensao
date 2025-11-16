@@ -1,4 +1,5 @@
 export type updateMeetingResponseDTO = {
+    titleMeeting?: string | null;
     meetingDate?: string| null;
     leaderUserAccountId?: number| null;
     gospelUserAccountId?: number| null; 

@@ -50,6 +50,7 @@ export class MeetingService implements IMeetingService{
             throw new Error("Não foi possível encontrar o usuário para ser o SOM/IMAGEM");        
 
         const createMeeting = this.meetingRepository.create({
+            titleMeeting: meetingRequest.titleMeeting.trim(),
             leaderUserAccountId: findLeaderUserAccoount.userAccountId,
             gospelUserAccountId: findGospelUserAccoount.userAccountId,
             vibrationUserAccountId: findVibrationUserAccoount.userAccountId,
@@ -138,6 +139,7 @@ export class MeetingService implements IMeetingService{
             .getMany();
 
         const resultFormatted = await getallMeetings.map((item) => ({
+            titleMeeting: item.titleMeeting,
             meetingId: item.meetingId,
             meetingDate: item.meetingDate,
             themeGospel: item.themeGospel,
@@ -188,6 +190,10 @@ export class MeetingService implements IMeetingService{
 
         if(meetingRequest.meetingDate != null){
             findMeeting.meetingDate = localDate;
+        }
+
+        if(meetingRequest.titleMeeting != null && meetingRequest.titleMeeting.trim() != ""){
+            findMeeting.titleMeeting = meetingRequest.titleMeeting.trim();
         }
 
         if(meetingRequest.leaderUserAccountId && meetingRequest.leaderUserAccountId != findMeeting.leaderUserAccountId){
@@ -279,6 +285,7 @@ export class MeetingService implements IMeetingService{
             throw new Error("Reunião não encontrada");
 
         const resultFormatted = {
+            titleMeeting: findMeeting.titleMeeting,
             meetingId: findMeeting.meetingId,
             meetingDate: findMeeting.meetingDate,
             themeGospel: findMeeting.themeGospel,
