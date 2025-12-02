@@ -57,7 +57,7 @@ export class MeetingController{
             !passManagerUserAccountId || !soundAndImageUserAccountId || !themeGospel
         )
             return res.status(400).json({message: "Para cria a reunião precisa preencher todos os campos"});
-
+        console.log(1)
         try{
             const result = await this.meetingService.createMeeting({
                 titleMeeting,

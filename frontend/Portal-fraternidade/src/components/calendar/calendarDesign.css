@@ -1,0 +1,95 @@
+a {
+    text-decoration: none;
+}
+
+.calendar-container {
+  margin-top: 5rem;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.calendar-header h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1d3557;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #1d3557;
+  padding: 5px;
+}
+
+.add-btn {
+  background: #77c043;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ------- CÉLULAS DO CALENDÁRIO ------- */
+
+.fc-daygrid-day {
+  height: 120px; /* aumenta tamanho como na imagem */
+}
+
+/* Nomes da semana */
+.fc-col-header-cell {
+  font-weight: bold;
+  color: #2b2d42;
+}
+
+/* ------- EVENTOS (tags azuis) ------- */
+
+.fc-event {
+  background: #009fe3 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 2px 6px !important;
+  font-size: 12px !important;
+  white-space: nowrap;
+}
+
+
+.fc {
+  font-family: Arial, sans-serif;
+}
+
+/* cabeçalho dos dias */
+.fc .fc-col-header-cell {
+  background: #f6f6f6;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+/* eventos */
+.fc-event {
+  background-color: #00a7e1 !important;
+  border-radius: 6px;
+  padding: 3px 6px;
+}
+
+/* dias */
+.fc-daygrid-day {
+  border-color: #ddd !important;
+}
+
+/* números dos dias */
+.fc-daygrid-day-number {
+  color: #4a4a4a;
+  font-weight: 600;
+}

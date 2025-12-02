@@ -9,6 +9,7 @@ import EditUsers from "../pages/signup/editUsersView";
 import Events from "../pages/event/eventView";
 import { CreateEvent } from "../pages/event/createEventView";
 import  Calendario  from "../pages/calendar/calendarView";
+import { CalendarCreateEventView } from "../pages/calendar/newCalendarEventView";
 
 
 function AppRoutes(): JSX.Element {
@@ -16,10 +17,13 @@ function AppRoutes(): JSX.Element {
     <AuthProvider>
       <BrowserRouter>    
         <Routes>   
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Dashboard" element={<DashBoard />} />  
           <Route path="/ManageUsers" element={<ManageUsers />} />   
-          <Route path="/Agenda" element={<Calendario />} />    
+          <Route path="/Agenda" element={<Calendario />} />  
+          <Route path="/AgendaNovoEvento" element={<CalendarCreateEventView />} />    
+          <Route path="/AgendaNovoEvento/:id" element={<CalendarCreateEventView />} />   
           <Route path="/EditUsers" element={<EditUsers />} />  
           <Route path="/EditUsers/:id" element={<EditUsers />} />   
           <Route path="/Events" element={<Events />} />   

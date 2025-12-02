@@ -25,8 +25,7 @@ export function TemplateDate(){
         const semana = parte.find(p => p.type === "weekday")!.value;
 
         const resultado = `${dia} de ${mes.charAt(0).toUpperCase() + mes.slice(1)} (${semana.charAt(0).toUpperCase() + semana.slice(1)})`;
-
-        console.log(resultado);
+        
         return resultado;
     }
 

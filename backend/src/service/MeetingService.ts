@@ -15,6 +15,7 @@ export class MeetingService implements IMeetingService{
     ){}
 
     public async createMeeting(meetingRequest: createMeetingResponseDTO): Promise<string>{
+        console.log(2)
         const findLeaderUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.leaderAccountId}});
         const findGospelUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.gospelUserAccountId}});
         const findVibrationUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.vibrationUserAccountId }});
@@ -22,10 +23,13 @@ export class MeetingService implements IMeetingService{
         const findReadingUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.readingUserAccountId}});
         const findPassManagerUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.passManagerUserAccountId}});
         const findSoundAndImageUserAccoount = await this.userRepository.findOne({where: {userAccountId: meetingRequest.soundAndImageUserAccountId}});
-
+        console.log(3)
         const [datePart, timePart] = meetingRequest.meetingDate.split(" ");
+        console.log(4)
         const [year, month, day] = datePart.split("-").map(Number);
+        console.log(5)
         const [hour, minute] = timePart.split(":").map(Number);
+        console.log(6)
         const localDate = new Date(year, month - 1, day, hour, minute);
 
         if(!findLeaderUserAccoount)

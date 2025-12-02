@@ -13,7 +13,7 @@ export function useScheduleHook() {
     const [schedule, setSchedule] = useState<ScheduleResponse>();
     // const {convertDate} = TemplateDate("");
     useEffect(() => {
-        async function fetchSchedule() {     
+        async function fetchSchedule() {    
       
         try {
             const response = await getSchedule(token);  

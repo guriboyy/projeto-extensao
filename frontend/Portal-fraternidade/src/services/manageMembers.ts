@@ -55,7 +55,7 @@ export async function updateUser(token: string, user:UserForm, id:string ) {
     return response;
 }
 
-export async function getAllUsers(token: string):Promise<any> {
+export async function getAllUsers(token: string):Promise<any> {   
     const response:User[] = await api.get("/user/get-all", {
         headers:{
             Authorization: `Bearer ${token}`,

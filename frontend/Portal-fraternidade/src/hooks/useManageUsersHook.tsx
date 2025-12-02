@@ -53,8 +53,7 @@ export function useManageUsersChildren() {
     const navigate = useNavigate();
 
     useEffect(() => {
-      async function fetchUserById() {
-        
+      async function fetchUserById() {       
         
         try {
           const client = await getUserById(id, token);        
@@ -75,8 +74,7 @@ export function useManageUsersChildren() {
         }
       }
 
-      if (id) {
-        
+      if (id) {        
         fetchUserById();
       } else {
         

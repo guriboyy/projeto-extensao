@@ -8,6 +8,8 @@ import { useManageUsersChildren } from '../../hooks/useManageUsersHook';
 import { Col, Row } from 'react-bootstrap';
 import { useEvent } from '../../hooks/useEventHook';
 import { TemplateDate } from '../../utils/utils';
+import { useActivityHook } from '../../hooks/useActivityHook';
+import { handleNavigate } from '../../hooks/useUtilHook';
 
 export function FormsDefault() {
     const {setEmail, setPasswd,handleForm, error} = useForm();
@@ -216,6 +218,207 @@ export function FormsCreateEvent() {
       </Form>
     </div>
   );
+}
+
+export function FormsCrateActivity() {
+  const {usersList,handleChange,activity,id, handleSubmit, editActivity} = useActivityHook();
+  const {goingAhead} = handleNavigate();
+  return (
+    <div className="container mt-5 p-4 border rounded shadow-sm bg-white">
+      <h4 className="mb-4">Nova Atividade</h4>
+
+      <Form onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Título da Atividade</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                value={id? editActivity.titleMeeting : activity.title}
+                onChange={(e) => handleChange(id,e)}                 
+                required
+              />
+            </Form.Group>
+          </Col>          
+        </Row>
+         <Row className="mb-3">
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Data</Form.Label>
+              <Form.Control
+                type="date"
+                name="date"
+                value={activity.date}
+                onChange={(e) => handleChange(id,e)}                 
+                required
+              />
+            </Form.Group>
+          </Col>        
+
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Hora</Form.Label>
+              <Form.Control
+                type="time"
+                name="hour"
+                value={activity.hour}
+                onChange={(e) => handleChange(id,e)}                 
+                required
+              />
+            </Form.Group>
+          </Col>        
+        </Row>
+        
+        <Row className='mb-3'>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Dirigente</Form.Label>
+              <Form.Select
+                name="leader"                            
+                onChange={(e) => handleChange(id,e)}  
+                value={id ? editActivity.leader.userAccountId : 0}    
+              >     
+              <option value={0}>Selecione...</option>           
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+                
+              
+              </Form.Select>
+            </Form.Group>
+          </Col>
+         <Col md={6}>
+            <Form.Group>
+              <Form.Label>Evangelho</Form.Label>
+              <Form.Select
+                name="gospel"                 
+                onChange={(e) => handleChange(id,e)}
+                value={id ? editActivity.gospel.userAccountId : 0}
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col> 
+        </Row>
+        <Row className='mb-3'>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Vibrações</Form.Label>
+              <Form.Select
+                 name="vibration"             
+                onChange={(e) => handleChange(id,e)}
+                value={id ? editActivity.vibration.userAccountId : 0}
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col>
+         <Col md={6}>
+            <Form.Group>
+              <Form.Label>Recepção / Fila</Form.Label>
+              <Form.Select
+                 name="frontDesk"                
+                onChange={(e) => handleChange(id,e)} 
+                value={id ? editActivity.frontDesk.userAccountId : 0}               
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col> 
+        </Row>
+        <Row className='mb-3'>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Leitura</Form.Label>
+              <Form.Select
+                name="reading"                 
+                onChange={(e) => handleChange(id,e)}      
+                value={id ? editActivity.reading.userAccountId : 0}          
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col>
+         <Col md={6}>
+            <Form.Group>
+              <Form.Label>Dirigente Passe</Form.Label>
+              <Form.Select
+                name="passManager"              
+                onChange={(e) => handleChange(id,e)} 
+                value={id ? editActivity.passManager.userAccountId : 0}               
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col> 
+        </Row>
+        <Row className='mb-3'>
+          <Col md={6}>
+            <Form.Group>
+              <Form.Label>Som / Imagem</Form.Label>
+              <Form.Select
+                 name="soundAndImage"               
+                onChange={(e) => handleChange(id,e)}  
+                value={id ? editActivity.soundAndImage.userAccountId : 0}              
+              >
+                <option value={0}>Selecione...</option>
+                {
+                  usersList?.data.map((user:any, key:any) => (
+                    <option value={user.userAccountId}>{user.firstName +" "+ user.lastName} </option>
+                  ))
+                }
+              </Form.Select>
+            </Form.Group>
+          </Col>
+         <Col md={6}>
+            <Form.Group>
+              <Form.Label>Tema do Evangelho</Form.Label>
+              <Form.Control
+                as="textarea"             
+                name="themeGospel"
+                value={id ? editActivity.themeGospel : activity.themeGospel}
+                onChange={(e) => handleChange(id,e)}
+                placeholder="Digite aqui..."
+              />
+            </Form.Group>
+          </Col> 
+        </Row>
+
+        <div className="d-flex justify-content-end gap-2">
+          <Button variant="secondary" type='button' onClick={() => goingAhead('Agenda')}>Cancelar</Button>
+          <Button type="submit" variant="primary">Criar Evento</Button>
+        </div>
+      </Form>
+    </div>
+  )
 }
 
 

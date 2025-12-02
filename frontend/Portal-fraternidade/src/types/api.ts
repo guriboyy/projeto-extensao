@@ -83,3 +83,48 @@ export interface EventsReponse {
   data: Event[],
   setEventsList: React.Dispatch<React.SetStateAction<Event[]>>;
 }
+
+export interface MonthActivity {
+  data: ActivityCalendar[],
+  setActivityList: React.Dispatch<React.SetStateAction<ActivityCalendar[]>>;
+}
+
+export interface ActivityRole {
+  userAccountId: number,
+  name: string
+}
+
+export interface SelectedActivity {
+  id: string;
+  title: string;
+  start: string;
+  [key: string]: any; 
+}
+
+export interface ActivityCalendar {
+  frontDesk:ActivityRole,
+  gospel:ActivityRole ,
+  leader:ActivityRole ,
+  meetingDate: string,
+  hour: string,
+  meetingId: number,
+  passManager:ActivityRole ,
+  reading:ActivityRole ,
+  soundAndImage: ActivityRole,
+  themeGospel: string,
+  titleMeeting: string,
+  vibration: ActivityRole
+}
+export interface Activity {
+  date: string,
+  leader: number,
+  gospel: number,
+  vibration: number,
+  frontDesk: number,
+  reading: number,
+  passManager: number,
+  soundAndImage: number,
+  themeGospel: string,
+  title: string,
+  hour: string
+}
