@@ -149,31 +149,31 @@ export class MeetingService implements IMeetingService{
             themeGospel: item.themeGospel,
             leader: {
                 userAccountId: item.leaderUserAccount.userAccountId,
-                name: item.leaderUserAccount.lastName + " " + item.leaderUserAccount.lastName
+                name: item.leaderUserAccount.firstName + " " + item.leaderUserAccount.lastName
             },
             gospel: {
                 userAccountId: item.gospelUserAccount.userAccountId,
-                name: item.gospelUserAccount.lastName + " " + item.gospelUserAccount.lastName
+                name: item.gospelUserAccount.firstName + " " + item.gospelUserAccount.lastName
             },
             vibration: {
                 userAccountId: item.vibrationUserAccount.userAccountId,
-                name: item.vibrationUserAccount.lastName + " " + item.vibrationUserAccount.lastName
+                name: item.vibrationUserAccount.firstName + " " + item.vibrationUserAccount.lastName
             },
             frontDesk: {
                 userAccountId: item.frontDeskUserAccount.userAccountId,
-                name: item.frontDeskUserAccount.lastName + " " + item.frontDeskUserAccount.lastName
+                name: item.frontDeskUserAccount.firstName + " " + item.frontDeskUserAccount.lastName
             },
             reading: {
                 userAccountId: item.readingUserAccount.userAccountId,
-                name: item.readingUserAccount.lastName + " " + item.readingUserAccount.lastName
+                name: item.readingUserAccount.firstName + " " + item.readingUserAccount.lastName
             },
             passManager: {
                 userAccountId: item.passManagerUserAccount.userAccountId,
-                name: item.passManagerUserAccount.lastName + " " + item.passManagerUserAccount.lastName
+                name: item.passManagerUserAccount.firstName + " " + item.passManagerUserAccount.lastName
             },
             soundAndImage: {
                 userAccountId: item.soundAndImageUserAccount.userAccountId,
-                name: item.soundAndImageUserAccount.lastName + " " + item.soundAndImageUserAccount.lastName
+                name: item.soundAndImageUserAccount.firstName + " " + item.soundAndImageUserAccount.lastName
             }
         }));
 
@@ -295,31 +295,31 @@ export class MeetingService implements IMeetingService{
             themeGospel: findMeeting.themeGospel,
             leader: {
                 userAccountId: findMeeting.leaderUserAccount.userAccountId,
-                name: findMeeting.leaderUserAccount.lastName + " " + findMeeting.leaderUserAccount.lastName
+                name: findMeeting.leaderUserAccount.firstName + " " + findMeeting.leaderUserAccount.lastName
             },
             gospel: {
                 userAccountId: findMeeting.gospelUserAccount.userAccountId,
-                name: findMeeting.gospelUserAccount.lastName + " " + findMeeting.gospelUserAccount.lastName
+                name: findMeeting.gospelUserAccount.firstName + " " + findMeeting.gospelUserAccount.lastName
             },
             vibration: {
                 userAccountId: findMeeting.vibrationUserAccount.userAccountId,
-                name: findMeeting.vibrationUserAccount.lastName + " " + findMeeting.vibrationUserAccount.lastName
+                name: findMeeting.vibrationUserAccount.firstName + " " + findMeeting.vibrationUserAccount.lastName
             },
             frontDesk: {
                 userAccountId: findMeeting.frontDeskUserAccount.userAccountId,
-                name: findMeeting.frontDeskUserAccount.lastName + " " + findMeeting.frontDeskUserAccount.lastName
+                name: findMeeting.frontDeskUserAccount.firstName + " " + findMeeting.frontDeskUserAccount.lastName
             },
             reading: {
                 userAccountId: findMeeting.readingUserAccount.userAccountId,
-                name: findMeeting.readingUserAccount.lastName + " " + findMeeting.readingUserAccount.lastName
+                name: findMeeting.readingUserAccount.firstName + " " + findMeeting.readingUserAccount.lastName
             },
             passManager: {
                 userAccountId: findMeeting.passManagerUserAccount.userAccountId,
-                name: findMeeting.passManagerUserAccount.lastName + " " + findMeeting.passManagerUserAccount.lastName
+                name: findMeeting.passManagerUserAccount.firstName + " " + findMeeting.passManagerUserAccount.lastName
             },
             soundAndImage: {
                 userAccountId: findMeeting.soundAndImageUserAccount.userAccountId,
-                name: findMeeting.soundAndImageUserAccount.lastName + " " + findMeeting.soundAndImageUserAccount.lastName
+                name: findMeeting.soundAndImageUserAccount.firstName + " " + findMeeting.soundAndImageUserAccount.lastName
             }
         } as meetingResponseDTO;
 
